@@ -18,3 +18,11 @@
 # TODO-2: Add assign_table method to the Order class which assign table to the
 #       client and change the table status
 # TODO-2: Set I/O for in_out option in Order class
+class Order:
+    def __init__(self, name, number):
+        self.name = name
+        self.number = number
+
+    @classmethod
+    def sample99(cls):
+        return cls(name='ali', number=10)
