@@ -24,5 +24,5 @@ class Order:
         self.number = number
 
     @classmethod
-    def sample99(cls):
-        return cls(name='ali', number=10)
+    def sample(cls, name='ali', number=10):
+        return cls(name, number)

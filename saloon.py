@@ -7,5 +7,6 @@ class Table:
         self.number = number
 
     @classmethod
-    def sample555(cls):
+
+    def sample(cls, name, number):
         return cls(name='ali', number=10)

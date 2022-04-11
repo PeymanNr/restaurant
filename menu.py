@@ -20,14 +20,14 @@
 #       creating each single item from user input and return data
 
 
-class Item():
+class Item:
     _id = 0
     food_list = ['pizza', 'burger', 'sandwich']
     beverage_list = ['mohito', 'limonad']
     starter_list = ['sezar', 'fasl']
-    price = {'sezar': 20000, 'fasl': 21000, 'pizaa': 50000, 'burger': 45000, 'sandiwich': 25000}
+    price = [20000, 21000, 50000]
 
-    # input1 = input("(Please  Enter customer Name) :")
+    # fullname = input("(Please  Enter customer Name) :")
     # input2 = input("(Please Enter Category food ,starter, beverage) :")
     # if input2 == 'food'or 'starter'or 'beverage':
     #     print(price)
@@ -37,25 +37,23 @@ class Item():
     # item = input1.split(), input2.split(), input3.split()
     # print(item)
     #
-    def __init__(self, name, price, food_list, time, beverage_list, starter_list, *args, **kwargs):
-        self.uuid = self.generate_id()
-        self.name = name
+    def __init__(self, fullname, price, food_list, beverage_list, starter_list, *args, **kwargs):
+        # self.uuid = self.generate_id()
+        self.fullname = fullname
         self.food_list = food_list
         self.starter_list = starter_list
         self.beverage_list = beverage_list
-        self.time = time
         self.price = price
         super().__init__(*args, **kwargs)
 
-
     @classmethod
-    def sample233(cls, name, food_list, starter_list, beverage_list, time, price):
-        return cls(name, food_list, starter_list, beverage_list, time, price)
+    def sample(cls, fullname, food_list, starter_list, beverage_list, price):
+        return cls(fullname=fullname, food_list=food_list, starter_list=starter_list, beverage_list=beverage_list, price=price)
 
-    @classmethod
-    def generate_id(cls):
-        cls._id += 1
-        return cls._id
+    # @classmethod
+    # def generate_id(cls):
+    #     cls._id += 1
+    #     return cls._id
 
 
 

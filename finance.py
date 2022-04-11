@@ -39,7 +39,7 @@ datetime = datetime.now()
 payment_type = ('cash', 'card')
 
 
-class Payment(Item):
+class Payment:
     # _id = 0
 
     def __init__(self, payment_type, is_paid, datetime, price, *args, **kwargs):
@@ -47,11 +47,12 @@ class Payment(Item):
         self.is_paid = is_paid
         self.datetime = datetime
         self.price = price
-        self.uuid = self.generate_id()
+        # self.uuid = self.generate_id()
         super().__init__(*args, **kwargs)
 
+
     @classmethod
-    def sample3(cls, price, payment_type, is_paid, datetime):
+    def sample(cls, price, payment_type, is_paid, datetime):
         return cls(price, payment_type, is_paid, datetime)
 
     # @classmethod
@@ -62,12 +63,17 @@ class Payment(Item):
 
 class Bill(ABC):
     _id = 0
+
     def __init__(self,total_price,*args, **kwargs):
         self.total_price = total_price
         self.uuid = self.generate_id()
         super().__init__(*args, **kwargs)
 
     @classmethod
-    def generate_id(cls):
-        cls._id += 1
-        return cls._id
+    def sample(cls, total_price):
+        return cls(total_price)
+
+    # @classmethod
+    # def generate_id(cls):
+    #     cls._id += 1
+    #     return cls._id
