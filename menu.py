@@ -18,6 +18,8 @@
 #       items in the menu
 # TODO-3: Add prompt() method to the Item class which will get proper dict for
 #       creating each single item from user input and return data
+from datetime import datetime
+from uuid import uuid4
 
 
 class Item:
@@ -26,6 +28,7 @@ class Item:
     beverage_list = ['mohito', 'limonad']
     starter_list = ['sezar', 'fasl']
     price = [20000, 21000, 50000]
+    datetime = datetime.now()
 
     # fullname = input("(Please  Enter customer Name) :")
     # input2 = input("(Please Enter Category food ,starter, beverage) :")
@@ -37,23 +40,27 @@ class Item:
     # item = input1.split(), input2.split(), input3.split()
     # print(item)
     #
-    def __init__(self, fullname, price, food_list, beverage_list, starter_list, *args, **kwargs):
-        # self.uuid = self.generate_id()
-        self.fullname = fullname
+    def __init__(self, uuid, name, price, food_list, beverage_list, datetime, item_type, starter_list, *args, **kwargs):
+        self.uuid = self.generate_id()
+        self.name = name
         self.food_list = food_list
         self.starter_list = starter_list
         self.beverage_list = beverage_list
+        self.datetime = datetime.now()
+        self.item_type = item_type
         self.price = price
         super().__init__(*args, **kwargs)
 
     @classmethod
-    def sample(cls, fullname, food_list, starter_list, beverage_list, price):
-        return cls(fullname=fullname, food_list=food_list, starter_list=starter_list, beverage_list=beverage_list, price=price)
+    def sample(cls, uuid=uuid4(), name='pem', food_list='pizaa', starter_list='sezar', beverage_list='mohito',
+               datetime=datetime, item_type='food_list', price=20000):
+        return cls(uuid=uuid, name=name, food_list=food_list, starter_list=starter_list,
+                   beverage_list=beverage_list, datetime=datetime, item_type=item_type, price=price)
 
-    # @classmethod
-    # def generate_id(cls):
-    #     cls._id += 1
-    #     return cls._id
+    @classmethod
+    def generate_id(cls):
+        cls._id += 1
+        return cls._id
 
 
 

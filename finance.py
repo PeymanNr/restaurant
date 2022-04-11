@@ -30,50 +30,54 @@
 
 
 from abc import ABC, abstractmethod
-from datetime import datetime
+
+from uuid import uuid4
+
 from menu import Item
-
-
-is_paid = ('Yes', 'No')
-datetime = datetime.now()
-payment_type = ('cash', 'card')
+from datetime import datetime
 
 
 class Payment:
-    # _id = 0
+    _id = 0
+    is_paid = ('Yes', 'No')
+    datetime = datetime.now()
+    payment_type = ('cash', 'card')
 
-    def __init__(self, payment_type, is_paid, datetime, price, *args, **kwargs):
+    def __init__(self, uuid, payment_type, is_paid, datetime, price, *args, **kwargs):
         self.payment_type = payment_type
         self.is_paid = is_paid
-        self.datetime = datetime
+        self.datetime = datetime.now()
         self.price = price
-        # self.uuid = self.generate_id()
-        super().__init__(*args, **kwargs)
-
-
-    @classmethod
-    def sample(cls, price, payment_type, is_paid, datetime):
-        return cls(price, payment_type, is_paid, datetime)
-
-    # @classmethod
-    # def generate_id(cls):
-    #     cls._id += 1
-    #     return cls._id
-
-
-class Bill(ABC):
-    _id = 0
-
-    def __init__(self,total_price,*args, **kwargs):
-        self.total_price = total_price
         self.uuid = self.generate_id()
         super().__init__(*args, **kwargs)
 
     @classmethod
-    def sample(cls, total_price):
-        return cls(total_price)
+    def sample(cls, uuid=uuid4, price=2000, payment_type='cash', is_paid='yes', datetime=datetime):
+        return cls(uuid=uuid, price=price, payment_type=payment_type, is_paid=is_paid, datetime=datetime)
 
-    # @classmethod
-    # def generate_id(cls):
-    #     cls._id += 1
-    #     return cls._id
+    @classmethod
+    def generate_id(cls):
+        cls._id += 1
+        return cls._id
+
+
+class Bill:
+    # _id = 0
+# total_price = list[]
+    _id = 0
+
+    def __init__(self, uuid, total_price, payment, *args, **kwargs):
+        self.uuid = self.generate_id()
+        self.total_price = total_price
+        self.payment = Payment()
+        # self.uuid = self.generate_id()
+        super().__init__(*args, **kwargs)
+
+    @classmethod
+    def sample(cls, uuid=uuid4, payment='fgfg', total_price=20000):
+        return cls(uuid=uuid, payment=payment, total_price=total_price)
+
+    @classmethod
+    def generate_id(cls):
+        cls._id += 1
+        return cls._id

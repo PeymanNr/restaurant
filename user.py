@@ -10,4 +10,4 @@ class Supervisor:
 
     @classmethod
     def sample(cls, name='pemi', password='125521', phone_number='9351254664'):
-        return cls(name, password, phone_number)
+        return cls(name=name, password=password, phone_number=phone_number)
