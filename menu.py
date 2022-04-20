@@ -21,46 +21,44 @@
 from datetime import datetime
 from uuid import uuid4
 
+name = input("enter name eat :")
+
+item_type = input("please entered Category s or f or b: ")
+price = input("Please enter Price: ")
+result = {'name': name, 'item_type': item_type, 'price': price}
+
 
 class Item:
     _id = 0
-    food_list = ['pizza', 'burger', 'sandwich']
-    beverage_list = ['mohito', 'limonad']
-    starter_list = ['sezar', 'fasl']
-    price = [20000, 21000, 50000]
+    item_list =[]
+    food_list = []
+    beverage_list = []
+    starter_list = []
     datetime = datetime.now()
+    item_type = []
 
-    # fullname = input("(Please  Enter customer Name) :")
-    # input2 = input("(Please Enter Category food ,starter, beverage) :")
-    # if input2 == 'food'or 'starter'or 'beverage':
-    #     print(price)
-    # input3 = input("(Please Enter the desired item ) :")
-    # if input3 in dict.keys(price):
-    #     print('me')
-    # item = input1.split(), input2.split(), input3.split()
-    # print(item)
-    #
-    def __init__(self, uuid, name, price, food_list, beverage_list, datetime, item_type, starter_list, *args, **kwargs):
+    def __init__(self, name, price, item_type, *args, **kwargs):
         self.uuid = self.generate_id()
         self.name = name
-        self.food_list = food_list
-        self.starter_list = starter_list
-        self.beverage_list = beverage_list
+        self.uuid = uuid4()
         self.datetime = datetime.now()
+        self.search_item()
         self.item_type = item_type
         self.price = price
         super().__init__(*args, **kwargs)
 
-    @classmethod
-    def sample(cls, uuid=uuid4(), name='pem', food_list='pizaa', starter_list='sezar', beverage_list='mohito',
-               datetime=datetime, item_type='food_list', price=20000):
-        return cls(uuid=uuid, name=name, food_list=food_list, starter_list=starter_list,
-                   beverage_list=beverage_list, datetime=datetime, item_type=item_type, price=price)
+    def sample(cls, name='pem', item_type='f', price=20000):
+        return cls(name=name,item_type=item_type, price=price)
 
     @classmethod
     def generate_id(cls):
         cls._id += 1
         return cls._id
 
+    # @classmethod
+    # def inputs(cls):
+
+    def search_item(self):
+        if item_type == 's':
 
 

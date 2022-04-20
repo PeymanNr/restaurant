@@ -47,7 +47,7 @@ class Payment:
         self.payment_type = payment_type
         self.is_paid = is_paid
         self.datetime = datetime.now()
-        self.price = price
+        self.price = Item.price()
         self.uuid = self.generate_id()
         super().__init__(*args, **kwargs)
 
